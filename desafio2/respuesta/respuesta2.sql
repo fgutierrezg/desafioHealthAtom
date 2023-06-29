@@ -70,12 +70,12 @@ WHERE av.fecha > mue.fecha
 /*
 
 Tenemos incongruencias ya que existen avistamientos registrados de titanes que se supone murieron.
-Esto pudiese ser por:
-1. Problemas de quienes ingresan la información, 
-2. Problemas del sistema (a nivel código) que guarda y asigna fecha a los registros, 
-3. Problema de definición a nivel de BD como una función, trigger, procedimiento almacenado u otro que contenga un error.
+Esto puede deberse a:
+1. Problemas de quienes ingresan la información, error de tipeo, error humano. 
+2. Problemas del sistema (a nivel código). Suponiendo que exista alguna función que guarda y asigna fecha a los registros, puede que esta se encuentre con algun error, sería bueno revisar el código. 
+3. Problema de definición a nivel de BD. Quizás existe una función, un trigger, procedimiento almacenado u otro proceso que contenga un error.
 
-Además, pudiese ser que haya algun traidor entre las filas que esté corrompiendo los registros para crear una falta sensación de seguridad y victoria
+Además, pudiese ser que haya algun traidor entre las filas que esté corrompiendo los registros a propósito para bajar la moral o crear desconfianza en quienes lideran la resistencia humana.
 
 */
 
