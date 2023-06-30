@@ -21,17 +21,12 @@
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
-    <!-- La utilización de librerías JS y/o CSS externo está PERMITIDO -->
   </head>
   <body>
-    <!-- TU CÓDIGO AQUÍ -->
     <style>
       .hiddenStart {
         display: none;
       }
-      /*
-				Incluir CSS en este bloque, en vez de un archivo externo .css, está PERMITIDO
-			*/
     </style>
 
     <div class="container p-4">
@@ -202,7 +197,6 @@
       }
 
       function ingresarRegistro(idForm) {
-
         idForm = idForm.replace(/\D/g, "");
 
         //Obtener los valores del formulario
@@ -301,9 +295,7 @@
       }
 
       function actualizarTabla() {
-        //limpiar tabla por su ID
         ttable = document.getElementById("tablaRecursos");
-
         ttable.removeChild(ttable.getElementsByTagName("tbody")[0]);
 
         var tbody = document.createElement("tbody");
@@ -332,7 +324,6 @@
               cell.textContent = element[index];
             }
 
-            // Establecer el contenido de la celda con el elemento
             row.appendChild(cell);
           }
 
