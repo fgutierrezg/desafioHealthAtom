@@ -1,22 +1,348 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title></title>
-		<!-- La utilización de librerías JS y/o CSS externo está PERMITIDO -->
-	</head>
-	<body>
-		<!-- TU CÓDIGO AQUÍ -->
-		<style>
-			/*
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <!-- La utilización de librerías JS y/o CSS externo está PERMITIDO -->
+  </head>
+  <body>
+    <!-- TU CÓDIGO AQUÍ -->
+    <style>
+      .hiddenStart {
+        display: none;
+      }
+      /*
 				Incluir CSS en este bloque, en vez de un archivo externo .css, está PERMITIDO
 			*/
-		</style>
-		<script type="text/javascript">
-			/*
-				Incluir JS en este bloque, en vez de un archivo externo .js, está PERMITIDO
-			*/
-		</script>
-	</body>
+    </style>
+
+    <div class="container p-4">
+      <h5 class="hidden1 mb-3">Pantalla 1</h5>
+      <form class="row hidden1 align-items-center" id="form1">
+        <div class="col-md-3 p-3">
+          <label for="selectRecursos1" class="form-label"
+            >Ingreso de recursos</label
+          >
+          <select
+            required
+            class="form-select selectRecursos selectRecursos1"
+            id="selectRecursos1"
+            aria-label="Default select example"
+          >
+            <option selected disabled>Selecciona recurso</option>
+            <option value="Agua">Agua</option>
+            <option value="Polvora">Polvora</option>
+            <option value="Gas">Gas</option>
+            <option value="Hojas">Hojas</option>
+            <option value="EquipoManiobras">Equipo Maniobras</option>
+          </select>
+        </div>
+        <h5 class="hiddenStart hidden1">Pantalla 2</h5>
+        <div class="col-md-3 hiddenStart hidden1" id="hidden1">
+          <label for="inputUnidad1" class="form-label">Unidad</label>
+          <input
+            required
+            type="text"
+            disabled
+            class="form-control"
+            id="inputUnidad1"
+          />
+        </div>
+        <div class="col-md-3 hiddenStart hidden1" id="hidden1">
+          <label for="inputCantidad1" class="form-label">Cantidad</label>
+          <input
+            required
+            type="number"
+            class="form-control"
+            id="inputCantidad1"
+          />
+        </div>
+        <div class="col-3 p-3 hiddenStart hidden1" id="hidden1">
+          <button type="submit" class="btn btn-primary">Ingresar</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="container hiddenStart hidden2">
+      <h5>Pantalla 3</h5>
+      <form class="row row-cols-lg-auto p-3 g-3 align-items-center" id="form2">
+        <div class="col-12">
+          <label for="inputCantidad2" class="form-label">Cantidad</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            id="inputCantidad2"
+          />
+        </div>
+
+        <div class="col-12">
+          <label for="inputUnidad2" class="form-label">Unidad</label>
+          <input
+            required
+            type="text"
+            disabled
+            class="form-control"
+            id="inputUnidad2"
+          />
+        </div>
+
+        <div class="col-12">
+          <label for="selectRecursos2" class="form-label">Recurso</label>
+          <select
+            required
+            class="form-select selectRecursos selectRecursos2"
+            id="selectRecursos2"
+          >
+            <option selected disabled>Selecciona recurso</option>
+            <option value="Agua">Agua</option>
+            <option value="Polvora">Polvora</option>
+            <option value="Gas">Gas</option>
+            <option value="Hojas">Hojas</option>
+            <option value="EquipoManiobras">Equipo Maniobras</option>
+          </select>
+        </div>
+
+        <div class="col-12">
+          <br />
+          <button type="submit" class="btn btn-primary form-control">
+            Ingresar
+          </button>
+        </div>
+      </form>
+
+      <div class="row">
+        <div class="col-12">
+          <table id="tablaRecursos" class="table">
+            <thead>
+              <tr>
+                <th scope="col">Recurso</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Fecha Ingreso</th>
+                <th scope="col">Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">--</th>
+                <td>--</td>
+                <td>--</td>
+                <td>
+                  <a href="#"><i class="fas fa-trash"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      //Listener generico para select
+      document.addEventListener("change", (event) => {
+        var selectId = event.target.id;
+        var selectTarget = document.getElementById(selectId);
+
+        if (selectTarget.tagName === "SELECT") {
+          actualizarUnidad(selectTarget.value, selectId);
+          mostrarOcultarElementos(selectId, "block");
+        }
+      });
+
+      //ListenerGenerico para submit
+      document.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        var idForm = event.target.id;
+        ingresarRegistro(idForm);
+      });
+
+      function mostrarOcultarElementos(idSelect, action) {
+        idSelect = document.querySelectorAll(
+          ".hidden" + idSelect.replace(/\D/g, "")
+        );
+
+        idSelect.forEach(function (elemento) {
+          elemento.style.display = action;
+        });
+      }
+
+      function actualizarUnidad(recurso, selectId) {
+        selectId = selectId.replace(/\D/g, "");
+
+        var input = document.getElementById("inputUnidad" + selectId);
+
+        if (recurso == "Agua") {
+          input.value = "l";
+        } else if (recurso == "Polvora") {
+          input.value = "g";
+        } else if (recurso == "Gas") {
+          input.value = "tubo";
+        } else if (recurso == "Hojas" || "EquipoManiobras") {
+          input.value = "unidad";
+        }
+      }
+
+      function ingresarRegistro(idForm) {
+
+        idForm = idForm.replace(/\D/g, "");
+
+        //Obtener los valores del formulario
+        var recurso = document.getElementById("selectRecursos" + idForm).value;
+        var unidad = document.getElementById("inputUnidad" + idForm).value;
+        var cantidad = document.getElementById("inputCantidad" + idForm).value;
+
+        if (recurso == "" || unidad == "" || cantidad == "") {
+          alert("Uno o más campos vacios");
+          return;
+        }
+
+        console.log(recurso);
+
+        fecha = new Date();
+
+        var objetoJSON = {
+          recurso: recurso,
+          cantidad: cantidad + " " + unidad,
+          fecha:
+            fecha.getDate() +
+            "-" +
+            fecha.getMonth() +
+            "-" +
+            fecha.getFullYear(),
+        };
+
+        var key = uniqueKey64Generator(fecha);
+
+        // Almacenar los valores en el localStorage
+        localStorage.setItem("reg" + key, JSON.stringify(objetoJSON));
+
+        // Limpiar los campos del formulario
+        document.getElementById("form" + idForm).reset();
+
+        if (idForm == 1) {
+          mostrarOcultarElementos("1", "none");
+          mostrarOcultarElementos("2", "block");
+        }
+
+        // Confirmar que se almacenaron los valores
+        console.log("Registro Almacenado: " + key);
+
+        actualizarTabla();
+      }
+
+      function uniqueKey64Generator(fecha) {
+        return btoa(
+          fecha.getFullYear() +
+            "-" +
+            (fecha.getMonth() + 1) +
+            "-" +
+            fecha.getDate() +
+            "-" +
+            fecha.getHours() +
+            "-" +
+            fecha.getMinutes() +
+            "-" +
+            fecha.getSeconds()
+        );
+      }
+
+      function obtenerRegistros() {
+        // Obtener todo localStorage
+        var claves = Object.keys(localStorage);
+        // Filtrar claves con "reg"
+        var clavesFiltradas = claves.filter(function (clave) {
+          return clave.startsWith("reg");
+        });
+
+        registros = [];
+
+        // Recorrer registros por las claves
+        clavesFiltradas.forEach(function (clave) {
+          //Volver cadena de texto almacenada a JSON
+          var valor = JSON.parse(localStorage.getItem(clave));
+
+          registros.push([
+            valor["recurso"],
+            valor["cantidad"],
+            valor["fecha"],
+            clave,
+          ]);
+        });
+
+        return registros;
+      }
+
+      function eliminarRegistro(idRegistro) {
+        if (confirm("¿Eliminar el registro?")) {
+          localStorage.removeItem(idRegistro);
+          console.log("Registro eliminado:", idRegistro);
+
+          actualizarTabla();
+        }
+      }
+
+      function actualizarTabla() {
+        //limpiar tabla por su ID
+        ttable = document.getElementById("tablaRecursos");
+
+        ttable.removeChild(ttable.getElementsByTagName("tbody")[0]);
+
+        var tbody = document.createElement("tbody");
+
+        registros = obtenerRegistros();
+
+        registros.forEach((element) => {
+          var row = document.createElement("tr"); // Crear una nueva fila
+
+          for (let index = 0; index < element.length; index++) {
+            var cell = document.createElement("td"); // Crear una nueva celda
+
+            if (index == 3) {
+              var link = document.createElement("a");
+              link.href = "#";
+              link.setAttribute(
+                "onclick",
+                "eliminarRegistro('" + element[index] + "')"
+              );
+              var italic = document.createElement("i");
+              italic.classList.add("fas");
+              italic.classList.add("fa-trash");
+              link.appendChild(italic);
+              cell.appendChild(link);
+            } else {
+              cell.textContent = element[index];
+            }
+
+            // Establecer el contenido de la celda con el elemento
+            row.appendChild(cell);
+          }
+
+          tbody.appendChild(row);
+        });
+
+        ttable.appendChild(tbody);
+
+        console.log("Tabla actualizada");
+      }
+    </script>
+  </body>
 </html>
